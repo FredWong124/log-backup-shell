@@ -4,7 +4,7 @@
 srcDir="/etc/httpd/logs"
 
 #set dir that you want to be destination
-dstDir="/home/ec2-user/web_ser_log_backup"
+dstDir="/your/destination/path"
 
 #set how many days you want to keep your backup
 keeping_days=30
