@@ -4,23 +4,31 @@
 srcDir="/etc/httpd/logs"
 
 #set dir that you want to be destination
-dstDir="/your/destination/path"
+dstDir="/home/ec2-user/web_ser_log_backup"
 
 #set how many days you want to keep your backup
 keeping_days=30
 
-#will tar up the file under the source directory
-tar zcfp $dstDir/web_server_log_backup$(date +%Y%m%d).tar.gz $srcDir
+#if there is no destination directory , then create the new one
+mkdir -p $dstDir
 
-#delete the oldest file after file keeping day are reached
+#copy log files from source dir
+cp $srcDir/access_log $srcDir/error_log $dstDir
+
+#naming the backup tar.gz file and tar up logs file
+backup="web_server_logs_$(date +%Y%m%d).tar.gz"
+tar -czf $dstDir/$backup -C $dstDir access_log error_log
+
+#remove the logs copy from source file
+rm -f $dstDir/access_log
+rm -f $dstDir/error_log
+
+#delete expired backup
 expired_backup=$(ls -t $dstDir | tail -n +$((keeping_days+1)))
-for del in $expired_backup; do
-        rm -rf $dstDir/$del
-
+        for del in $expired_backup; do
+                rm -rf $dstDir/$del
 done
-
 
 
 echo "done"
 exit 0
-
