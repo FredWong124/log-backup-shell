@@ -29,7 +29,15 @@ A Shell script for backing up apache web server logs and performing cleanup of o
 
 ## Automate the backup procedure:
 
-You can set up a cron job to schedule the execution of the script at regular intervals for fully automated backups. Refer to the crontab documentation for more information on how to set up a cron job.
+You can set up a cron job to schedule the execution of the script at regular intervals for fully automated backups.
+1.Edit your cronjob
+`crontab -e`
+2.Set up the time that you want to perform auto backup
+`0 8 * * * /bin/bash /path/to/your/sh`
+0 = mins , 8 = hours , this example shows it will run the script at 8am everyday.
+3. Save the corntab
+4. Check the corntab
+`crontab -l`
 
 ## Customization
 Feel free to fork this repository and customize the script to suit your specific requirements.
