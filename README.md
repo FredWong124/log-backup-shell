@@ -20,11 +20,11 @@ A Shell script for backing up apache web server logs and performing cleanup of o
 - `keeping_days`: Define the number of days to retain the backup files.
 
 3. Make the script executable:
- `chmod +x backup_script.sh`
+ `chmod +x backup.sh`
 
  4. Execute the script:
  `./backup.sh`
- This will create a new backup file in the destination directory, following the format `web_server_log_backupYYYYMMDD.tar.gz`. The `YYYYMMDD` represents the current date. The script will also handle the deletion of old backup files that exceed the specified number of keeping days.
+ This will create a new backup file in the destination directory, following the format `web_server_logsYYYYMMDD.tar.gz`. The `YYYYMMDD` represents the current date. The script will also handle the deletion of old backup files that exceed the specified number of keeping days.
 
 
 ## Automate the backup procedure:
